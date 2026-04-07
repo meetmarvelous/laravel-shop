@@ -16,12 +16,13 @@ class CreateSalesTable extends Migration
         Schema::create('sales', function (Blueprint $table) {
             $table->increments('id');
             $table->string('reference_no');
-            $table->string('customer_id');
+            $table->string('customer');
+            $table->string('address');
+            $table->string('phone');
             $table->integer('item');
             $table->double('total_qty');
             $table->double('total_price');
             $table->double('grand_total');
-            $table->string('payment_status');
             $table->double('paid_amount')->nullable();
             $table->text('note')->nullable();
             $table->timestamps();

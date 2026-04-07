@@ -14,7 +14,9 @@ class DropColumnsFromSalesTable extends Migration
     public function up()
     {
         Schema::table('sales', function (Blueprint $table) {
-             $table->dropColumn(['customer', 'address', 'phone']);
+             if (Schema::hasColumn('sales', 'customer')) { $table->dropColumn('customer'); }
+             if (Schema::hasColumn('sales', 'address')) { $table->dropColumn('address'); }
+             if (Schema::hasColumn('sales', 'phone')) { $table->dropColumn('phone'); }
         });
     }
 

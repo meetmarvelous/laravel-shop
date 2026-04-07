@@ -14,8 +14,8 @@ class AddCustomerIdToSalesTable extends Migration
     public function up()
     {
         Schema::table('sales', function (Blueprint $table) {
-            $table->integer('customer_id')->nullable();
-            $table->string('payment_status')->nullable();
+             if (!Schema::hasColumn('sales', 'customer_id')) { $table->integer('customer_id')->nullable(); }
+             if (!Schema::hasColumn('sales', 'payment_status')) { $table->string('payment_status')->nullable(); }
         });
     }
 
